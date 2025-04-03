@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@deepgram/sdk": "^3.11.3",
+    "@google-cloud/speech": "^7.0.1"
+  }
+}
