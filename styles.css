@@ -1,12 +1,30 @@
 h1{
-    font-size: 2rem;
+   font-size: var(--h1-font-size);
 }
 h2{
-    font-size: 3rem;
+    font-size: var(--h2-font-size);
 }
 
 p, div{
     color: white;
+    font-size: var(--p-font-size);
+}
+
+p, h1, h2, h3, h4, h5, h6{
+    --p-font-size: 1.5rem;
+    --h1-font-size: 2.25em;
+    --h2-font-size: 1.8rem;
+}
+
+h2{
+    text-align: right;
+}
+
+#startButton{
+    position: fixed;
+    font-weight: bold;
+    font-size: 1rem;
+    border: solid 4px rgb(255, 250, 148);
 }
 
 button{
@@ -14,7 +32,6 @@ button{
     border-radius: 50% 50%;
     aspect-ratio: 1;
     padding: 2rem;
-    background-image: url(https://img.icons8.com/?size=100&id=58562&format=png&color=000000);
     background-size: contain;
     background-repeat: no-repeat;
 }
@@ -29,7 +46,9 @@ button{
     outline-offset: 2px;
 }
 
-
+body.dark-mode{
+    background-color: #141414;
+}
 
 
 section:has(> article){
