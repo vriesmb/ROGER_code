@@ -52,6 +52,36 @@ if (SpeechRecognition) {
         // ff checken of hij nog op niet false staat (dus speaking is) + commando
         if (command.includes("annotatie maken") && !isSpeaking) {
             outputDiv.textContent = "Annotatie bij deze gemaakt";
+            let annotation = prompt("Voer je annotatie in:");
+            if (annotation) {
+                // Create new div for annotation with timestamp
+                const annotationDiv = document.createElement('div');
+                const timestamp = new Date().toLocaleString();
+                annotationDiv.innerHTML = `<p>${timestamp}: ${annotation}</p>`;
+
+                // Add to annotations container (create if doesn't exist)
+                let annotationsContainer = document.getElementById('annotationsContainer');
+                if (!annotationsContainer) {
+                    annotationsContainer = document.createElement('div');
+                    annotationsContainer.id = 'annotationsContainer';
+                    document.body.appendChild(annotationsContainer);
+
+                    // Add read button
+                    const readButton = document.createElement('button');
+                    readButton.textContent = 'Lees alle annotaties';
+                    readButton.onclick = () => {
+                        const allAnnotations = Array.from(annotationsContainer.getElementsByTagName('p'))
+                            .map(p => p.textContent)
+                            .join('. ');
+                        speakText(allAnnotations);
+                    };
+                    document.body.appendChild(readButton);
+                }
+
+                // Add new annotation at the top
+                annotationsContainer.insertBefore(annotationDiv, annotationsContainer.firstChild);
+                alert("Annotatie gemaakt: " + annotation);
+            }
             speakText("Annotatie bij deze gemaakt, Mike");
             recognition.stop(); // Stop de spraakherkenning
         }
@@ -85,7 +115,7 @@ if (SpeechRecognition) {
             document.querySelectorAll('p').forEach(el => el.style.fontSize = 'var(--p-font-size)');
         }
 
-        else if (command.includes("stop maar") && !isSpeaking || command.includes("laat maar") && !isSpeaking) {
+        else if (command.includes("stop") && !isSpeaking || command.includes("laat maar") && !isSpeaking) {
             outputDiv.textContent = "Spraakherkenning gestopt.";
             const responses = [
                 "Okido kapitein, ik laat je met rust.",
