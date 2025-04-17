@@ -439,51 +439,45 @@ function readParagraph() {
   stopReading();
 
   const paragraph = paragraphs[currentIndex].text;
-  words = paragraph.match(/[^\s]+|\s+[^\s\w]*/g) || [];
+  // Split into sentences instead of words
+  const sentences = paragraph.match(/[^.!?]+[.!?]+/g) || [paragraph];
   currentWordIndex = 0;
 
   const textElement = document.getElementById('manipulatieText');
   const originalHTML = textElement.innerHTML;
-  let currentPosition = 0;
 
-  function highlightAndSpeakWord() {
-    if (currentWordIndex >= words.length) {
+  function highlightAndSpeakSentence() {
+    if (currentWordIndex >= sentences.length) {
       textElement.innerHTML = originalHTML;
       return;
     }
 
-    const word = words[currentWordIndex];
-    const wordLength = word.length;
-    const wordStart = paragraph.indexOf(word, currentPosition);
+    const sentence = sentences[currentWordIndex];
+    const sentenceStart = paragraph.indexOf(sentence);
+    const sentenceEnd = sentenceStart + sentence.length;
 
-    if (wordStart === -1) {
-      currentWordIndex++;
-      highlightAndSpeakWord();
-      return;
-    }
-
-    const wordEnd = wordStart + wordLength;
-    currentPosition = wordEnd;
-
-    const before = originalHTML.substring(0, wordStart);
-    const highlighted = `<span class="word-highlight">${originalHTML.substring(wordStart, wordEnd)}</span>`;
-    const after = originalHTML.substring(wordEnd);
+    // Highlight current sentence
+    const before = originalHTML.substring(0, sentenceStart);
+    const highlighted = `<span class="word-highlight">${originalHTML.substring(sentenceStart, sentenceEnd)}</span>`;
+    const after = originalHTML.substring(sentenceEnd);
     textElement.innerHTML = before + highlighted + after;
 
-    currentSpeechUtterance = new SpeechSynthesisUtterance(word.trim());
+    // Create utterance for the full sentence
+    currentSpeechUtterance = new SpeechSynthesisUtterance(sentence.trim());
     currentSpeechUtterance.lang = 'nl-NL';
     currentSpeechUtterance.rate = speechRate;
 
+    // When sentence is done, move to next
     currentSpeechUtterance.onend = () => {
       currentWordIndex++;
-      const delay = word.endsWith('.') || word.endsWith('!') || word.endsWith('?') ? 500 : 150;
-      wordHighlightTimeout = setTimeout(highlightAndSpeakWord, delay);
+      // Add a pause between sentences
+      wordHighlightTimeout = setTimeout(highlightAndSpeakSentence, 500);
     };
 
     speechSynthesis.speak(currentSpeechUtterance);
   }
 
-  highlightAndSpeakWord();
+  highlightAndSpeakSentence();
 }
 
 function stopReading() {
