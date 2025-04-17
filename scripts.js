@@ -63,6 +63,15 @@ const searchButton = document.getElementById('searchButton');
 const speechRateInput = document.getElementById('speechRateInput');
 const speechRateValue = document.getElementById('speechRateValue');
 
+// Add this near the top of your script with other event listeners
+document.addEventListener('keydown', (e) => {
+  // Check if the pressed key is '/'
+  if (e.key === '/') {
+    e.preventDefault(); // Prevent the '/' from appearing in any input field
+    document.getElementById('startButton').click();
+  }
+});
+
 // Initialize the app
 function init() {
   loadData();
@@ -157,6 +166,19 @@ function setupAnnotationHandlers() {
       saveData();
       annotationInput.value = '';
       updateDisplay();
+
+      // Stop dictation after saving annotation
+      if (isDictationActive) {
+        stopDictation();
+      }
+    }
+  });
+
+  // Also modify the Enter key handler to stop dictation
+  annotationInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      saveAnnotationButton.click(); // This will trigger the save and stop dictation
     }
   });
 
@@ -644,6 +666,11 @@ function handleCommands(command) {
   const outputDiv = document.getElementById('commandOutput');
 
   if (command.includes("annotatie maken")) {
+    // Stop any existing dictation first
+    if (isDictationActive) {
+      stopDictation();
+    }
+
     // Focus op het annotatieveld en start dictatie
     annotationInput.focus();
     annotationInput.value = ''; // Leeg het veld
@@ -657,8 +684,6 @@ function handleCommands(command) {
       setTimeout(() => {
         startDictation();
       }, 1500);
-
-
     }
 
     // Update status
