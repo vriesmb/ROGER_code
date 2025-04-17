@@ -24,17 +24,11 @@ h2{
     position: fixed;
     font-weight: bold;
     font-size: 1rem;
+    bottom: 0;
+    right: 0;
     border: solid 4px rgb(255, 250, 148);
 }
 
-button{
-    background-color: #f9f100;
-    border-radius: 50% 50%;
-    aspect-ratio: 1;
-    padding: 2rem;
-    background-size: contain;
-    background-repeat: no-repeat;
-}
 
 &:focus {
     outline: 2px solid #fffb89;
@@ -49,6 +43,191 @@ button{
 body.dark-mode{
     background-color: #141414;
 }
+
+body{
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+}
+
+
+/* Algemene styling voor de container */
+.main_container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem; /* Ruimte tussen secties */
+    padding: 1rem;
+    background-color: #f4f4f4; /* Lichte achtergrondkleur */
+    color: #333; /* Donkere tekstkleur */
+    border-radius: 8px;
+    box-sizing: border-box;
+    min-height: 40rem;
+}
+
+.main_container{
+    width: 100%;
+}
+
+/* Styling voor de focus area */
+.main_focus_area {
+    width: 100%;
+    background-color: #181818;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+/* Styling voor de notes sidebar */
+.notes_sidebar {
+    width: 100%;
+    background-color: #333;
+    padding: 1rem;
+    border-radius: 8px;
+    box-sizing: border-box;
+    order: 1;
+}
+
+/* Menu overlay styling */
+#menuOverlay {
+    display: none; /* Start verborgen */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8); /* Donkere overlay */
+    color: white;
+    padding: 2rem;
+    z-index: 1000;
+    box-sizing: border-box;
+}
+
+#menuOverlay h3 {
+    margin-bottom: 1rem;
+}
+
+#menuOverlay ul {
+    list-style: none;
+    padding: 0;
+}
+
+#menuOverlay ul li {
+    margin-bottom: 0.5rem;
+}
+
+#menuOverlay ul li a {
+    color: #fffb89;
+    text-decoration: none;
+}
+
+#menuOverlay ul li a:hover {
+    text-decoration: underline;
+}
+
+#closeMenuButton {
+    margin-top: 1rem;
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Navigatieknoppen */
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.navigation button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.navigation button:hover {
+    background-color: #0056b3;
+}
+
+/* Artikel styling */
+#currentParagraph {
+    background-color: #f9f9f9;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    line-height: 1.6;
+    font-size: 1rem;
+    color: #333;
+}
+
+.main_focus_area > div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.annotation{
+    background-color: black;
+    padding: .5rem;
+    border-radius: 5px;
+}
+
+#annotationInput{
+    width: 90vw;
+    height: fit-content;
+}
+
+.annotation_container{
+    display: flex;
+}
+
+.notes_sidebar{
+    display: flex;
+    flex-direction: column;
+
+    & article{
+        display: flex;
+        flex-direction: column;
+        gap: .5rem;
+    }
+}
+
+/* Responsieve styling */
+@media screen and (min-width: 768px) {
+    .main_container {
+        flex-direction: row;
+        gap: 2rem;
+    }
+
+    .main_focus_area {
+        width: 70%;
+        order: 1;
+        flex-direction: column;
+    }
+
+    .notes_sidebar {
+        width: 30%;
+        order: 2;
+    }
+}
+
+
+
+
 
 
 section:has(> article){
@@ -110,4 +289,249 @@ section:has(> article){
     align-items: center;
     font-size: 24px;
     z-index: 999;
+}
+
+
+.annotation {
+    background-color: #222;
+    padding: 1rem;
+    border-radius: 5px;
+    margin-bottom: 0.5rem;
+    position: relative;
+}
+
+.annotation small {
+    color: #aaa;
+    display: block;
+    margin-top: 0.5rem;
+    font-size: 0.8rem;
+}
+
+.delete-annotation {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    background: none;
+    border: none;
+    color: #ff4d4d;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 0 0.5rem;
+}
+
+#annotationsContainer {
+    max-height: 60vh;
+    overflow-y: auto;
+    padding-right: 0.5rem;
+}
+
+/* Scrollbar styling */
+#annotationsContainer::-webkit-scrollbar {
+    width: 8px;
+}
+
+#annotationsContainer::-webkit-scrollbar-track {
+    background: #444;
+}
+
+#annotationsContainer::-webkit-scrollbar-thumb {
+    background: #666;
+    border-radius: 4px;
+}
+
+#annotationsContainer::-webkit-scrollbar-thumb:hover {
+    background: #888;
+}
+
+
+/* Add these to your existing CSS */
+
+.controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: 1rem;
+    background-color: #222;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+}
+
+.controls button {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    background-color: #444;
+    color: white;
+    cursor: pointer;
+}
+
+.controls button:hover {
+    background-color: #555;
+}
+
+.search-container {
+    display: flex;
+    gap: 0.5rem;
+    margin-left: auto;
+}
+
+#searchInput {
+    padding: 0.5rem;
+    border-radius: 4px;
+    border: 1px solid #666;
+    background-color: #333;
+    color: white;
+}
+
+#stopReadingButton {
+    background-color: #ff4d4d;
+}
+
+#stopReadingButton:hover {
+    background-color: #ff3333;
+}
+
+#readParagraphButton {
+    background-color: #4CAF50;
+}
+
+#readParagraphButton:hover {
+    background-color: #45a049;
+}
+
+.highlight {
+    background-color: yellow;
+    color: black;
+}
+
+.search-highlight {
+    background-color: #fffb89;
+    color: black;
+}
+
+.word-highlight {
+    background-color: #4CAF50;
+    color: white;
+    padding: 0 2px;
+    border-radius: 2px;
+}
+
+.annotation .edit-annotation {
+    position: absolute;
+    top: 0.5rem;
+    right: 2rem;
+    background: none;
+    border: none;
+    color: #4CAF50;
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 0 0.5rem;
+}
+
+.annotation-edit-input {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+    border-radius: 4px;
+    border: 1px solid #666;
+    background-color: #333;
+    color: white;
+}
+
+.annotation-edit-buttons {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: flex-end;
+}
+
+.annotation-edit-buttons button {
+    padding: 0.25rem 0.5rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.annotation-edit-save {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.annotation-edit-cancel {
+    background-color: #ff4d4d;
+    color: white;
+}
+
+#toggleSpeechInput {
+    background-color: #007bff;
+    color: white;
+    margin-left: 0.5rem;
+}
+
+#toggleSpeechInput:hover {
+    background-color: #0056b3;
+}
+
+#toggleDictation {
+    padding: 0.5rem 1rem;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  
+  #toggleDictation.active {
+    background-color: #f44336;
+  }
+  
+  #dictationStatus {
+    margin-left: 0.5rem;
+    font-size: 0.9rem;
+    color: #666;
+  }
+
+  .annotation {
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.annotation:hover {
+    background-color: #e9e900;
+    & p{
+        color: black;
+    }
+}
+
+.annotation:active {
+    background-color: #444;
+}
+
+.control-group {
+    margin: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.control-group label {
+    font-size: 0.9rem;
+    color: #fffb89;
+}
+
+input[type="range"] {
+    width: 200px;
+    background: #444;
+    height: 5px;
+    border-radius: 5px;
+    -webkit-appearance: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 15px;
+    height: 15px;
+    background: #fffb89;
+    border-radius: 50%;
+    cursor: pointer;
 }

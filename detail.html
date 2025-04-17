@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boek Tekst met Annotaties</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="commandOutput"></div>
+
+    <div id="overlay">
+        <div id="liveTranscript">Live Transcript: </div>
+    </div>  
+
+    <button id="startButton">Start Microfoon</button>
+
+    <div class="controls">
+        <button id="exportButton">Exporteer Data</button>
+        <button id="importButton">Importeer Data</button>
+        <input type="file" id="importFile" accept=".json" style="display: none;">
+        <button id="readParagraphButton">Lees Paragraaf</button>
+        <button id="stopReadingButton">Stop Lezen</button>
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Zoek in tekst en annotaties...">
+            <button id="searchButton">Zoek</button>
+        </div>
+        <div class="control-group">
+            <label>Snelheid voorlezen: <span id="speechRateValue">1.0</span></label>
+            <input type="range" id="speechRate" min="0.5" max="2" step="0.1" value="1">
+        </div>
+        <div class="control-group">
+            <label>Tekstgrootte: <span id="fontSizeValue">1.5</span>rem</label>
+            <input type="range" id="fontSize" min="1" max="3" step="0.1" value="1.5">
+        </div>
+    </div>
+
+<div class="main_container">
+    <section class="main_focus_area">
+        <div>
+            <h3>Boektitel is dit</h3>
+            <div>
+                <button id="leftArrowButton">←</button>
+                <button id="rightArrowButton">→</button>
+            </div>
+        </div>
+        
+        <article>
+            <p id="manipulatieText"></p>
+        </article>
+    </section>
+    <section class="notes_sidebar">
+        <h3>Annotaties</h3>
+        <div id="annotationsContainer"></div>
+    </section>
+</div>
+<div class="annotation_container">
+    <textarea id="annotationInput" placeholder="Voer hier je annotatie in..."></textarea>
+    <button id="saveAnnotationButton">Sla Annotatie Op</button>
+    <button id="toggleSpeechInput">Spraak Input Aan/Uit</button>
+   
+</div>
+<div class="speech-controls">
+    <button id="toggleDictation">🎤 Dictatie</button>
+    <span id="dictationStatus"></span>
+</div>
+</body>
+<script src="scripts.js"></script>
+</html>
