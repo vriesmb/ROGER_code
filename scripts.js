@@ -659,6 +659,20 @@ function setupVoiceCommands() {
 function handleCommands(command) {
   const outputDiv = document.getElementById('commandOutput');
 
+  // Navigation commands
+  if (command.includes("volgende")) {
+    rightArrowButton.click();
+    speakText("Volgende paragraaf");
+    return;
+  }
+
+  if (command.includes("vorige")) {
+    leftArrowButton.click();
+    speakText("Vorige paragraaf");
+    return;
+  }
+
+  // Existing annotation command
   if (command.includes("annotatie maken")) {
     // Stop any existing dictation first
     if (isDictationActive) {
