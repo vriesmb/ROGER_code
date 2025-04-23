@@ -152,7 +152,9 @@ Deze test zal achteraf hier worden aangevuld.
 #### 💭 Reflectie
 De eindtest bevestigde dat de tool intuïtief en toegankelijk is voor Roger. De toevoeging van mouseover speech-integratie en de hover-functie voor voorlezen hebben een grote impact gehad op de gebruiksvriendelijkheid, hij vindt ze zelfs geweldig. 
 
-Als ik meer tijd had gehad, had ik graag de mogelijkheid toegevoegd om annotaties voor te laten lezen en een uitgebreide annotatiebibliotheek ontwikkeld waarin Roger al zijn notities makkelijk kan terugvinden.
+
+### Aanbeveling
+Als ik meer tijd had gehad, had ik graag de mogelijkheid toegevoegd om annotaties voor te laten lezen en een uitgebreide annotatiebibliotheek ontwikkeld waarin Roger al zijn notities makkelijk kan terugvinden. 
 
 ## 📸 Screenshot van de Tool
 ![Screenshot van de Inclusieve Annotatietool](./v5.png)
@@ -192,8 +194,7 @@ Gedurende het project heb ik de **Exclusive Design Principles** toegepast:
 - De tool is aangepast aan zijn identiteit: rustige interface, korte tekstfragmenten, en visuele elementen die “van hem” zijn (bijv. border rond zijn annotatie, kleuraanduiding).
 
 ### 4. Add Nonsense ✅
-- Humor en plezier zijn essentieel volgens Roger. Kleine verrassingen (zoals unieke stemmen, grappige animaties of kleurrijke accenten) kunnen de ervaring minder klinisch maken.
-- In de visuele stijl is daar subtiel op ingespeeld.
+- Humor en plezier zijn leuk volgens Roger. Kleine verrassingen (zoals unieke stemmen, grappige animaties of kleurrijke accenten) kunnen de ervaring minder klinisch maken. Ik heb hier in latere versies helaas wat van uit moeten halen ivm errors. Maar in tussenversies had ik grapjes verwerkt zoals: "ik ga even sparren met mijn Ai-genoot", "Rondje lopen op het web" als je tegen de speach recog. zei van 'stop' of 'laat maar'.
 
 ---
 
