@@ -139,6 +139,26 @@ Deze sessie zal de volledige versie van de tool testen, met alle iteraties verwe
 
 Deze test zal achteraf hier worden aangevuld.
 
+### Eindtest: Resultaten
+#### Notities
+- Roger zei: “Kan er gewoon bijna helemaal blind doorheen, wat geweldig.”
+- Werkt super prettig.
+- De functie "lees voor op hover" is een super toevoeging.
+- Roger kan zelf een annotatie maken.
+- Hij kan ook zelf een annotatie laten afspelen.
+- De nieuw toegevoegde mouseover speech-integratie maakt het vinden van controls eenvoudig.
+- Tekst inspreken voor annotaties werkt goed.
+
+#### 💭 Reflectie
+De eindtest bevestigde dat de tool intuïtief en toegankelijk is voor Roger. De toevoeging van mouseover speech-integratie en de hover-functie voor voorlezen hebben een grote impact gehad op de gebruiksvriendelijkheid, hij vindt ze zelfs geweldig. 
+
+Als ik meer tijd had gehad, had ik graag de mogelijkheid toegevoegd om annotaties voor te laten lezen en een uitgebreide annotatiebibliotheek ontwikkeld waarin Roger al zijn notities makkelijk kan terugvinden.
+
+## 📸 Screenshot van de Tool
+![Screenshot van de Inclusieve Annotatietool](./v5.png)
+
+*Figuur 5: toegevoegd speech op elk interactief element + mouseover speech | command toegevoegd die taken uitvoeren | roger erg enthousiast  .*
+
 ---
 
 ## 🔄 Overkoepelende inzichten
@@ -151,6 +171,7 @@ Over alle sessies heen kwamen de volgende inzichten naar voren:
 - De scheiding tussen boektekst en aantekening moet altijd duidelijk zijn (visueel én auditief).
 - De gebruiker moet weten waar hij is (focus/posities), dus key-based navigatie is essentieel.
 - Kleine speelse elementen (humor, kleurgebruik) maken een interface menselijker.
+
 
 ---
 
