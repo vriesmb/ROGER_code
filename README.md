@@ -24,6 +24,8 @@ Roger wil graag:
 - Annotaties die makkelijk terug te vinden en te sorteren zijn
 - Een zo laagdrempelig mogelijke werkwijze / gebruiksvriendelijke ervaring
 
+
+
 ---
 
 ## Oplossing
@@ -63,11 +65,15 @@ Gedurende de ontwerpweek heb ik vier testsessies gehouden met Roger. Roger heeft
 #### 💭 Reflectie
 Deze eerste sessie leverde direct veel input. Roger's workflow was onnodig complex en rommelig. Het werd duidelijk dat de oplossing:
 - moet werken met screenreaders,
-- spraakherkenning moet bieden,
+- spraakherkenning handig is als ik dat kan bieden,
 - en duidelijke visuele + auditieve scheiding moet tonen tussen tekst en aantekening.
 
 Dit is de basis geweest voor mijn eerste prototype: eenvoudige interface met zwart/gele kleurstelling, en mogelijkheid om zinnen te annoteren via toetsenbord of spraak.
 
+
+## 📸 Screenshot van de Tool
+![Screenshot van de Inclusieve Annotatietool](./v1.png)
+*Figuur 1: Annotatietool met zwart/gele kleurstelling en speech recogn. die commando's kan uitvoeren zoals: kleur donkerder & tekst groter.*
 ---
 
 ### Test 2: Eerste prototype
@@ -96,6 +102,10 @@ Deze test leverde veel kleine maar belangrijke verbeteringen op:
 
 De interface is nu intuïtiever voor Roger. Ik ontdekte dat screenreadergebruikers andere navigatiegewoontes hebben – zoals liever minder scrollen/tabben, en sneller willen weten waar ze zijn.
 
+## 📸 Screenshot van de Tool
+![Screenshot van de Inclusieve Annotatietool](./v2.png)
+*Figuur 2: UI gemaakt en controls toegevoegd | zoekfunctie | annotaties functie.*
+
 ---
 
 ### Test 3: Verbeterde versie
@@ -112,6 +122,11 @@ De interface is nu intuïtiever voor Roger. Ik ontdekte dat screenreadergebruike
 #### 💭 Reflectie
 De verbeteringen zijn duidelijk voelbaar voor Roger. Deze sessie bevestigde dat mijn ontwerpkeuzes juist waren. Vooral het verschil tussen focus states en zichtbaarheid van annotaties werd gewaardeerd. De tool werd nu gezien als écht bruikbaar in zijn studiepraktijk. Ik zag ook hoe belangrijk **visueel vertrouwen** is: Roger wil direct weten of iets van hem is of van het boek. Dat leidde tot meer nadruk op *identiteit van annotaties*.
 
+## 📸 Screenshot van de Tool
+![Screenshot van de Inclusieve Annotatietool](./v3.png)
+![Screenshot van de Inclusieve Annotatietool](./v4.png)
+
+*Figuur 3 & 4: Alert bij zoekfunctie toegevoegd | voorlees functie geintegreerd | zoekfunctie highlight nu ook tekst in annotatie  .*
 ---
 
 ### Test 4: Eindtest (nog gepland)
