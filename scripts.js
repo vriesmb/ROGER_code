@@ -81,6 +81,7 @@ function init() {
   updateSpeechInputUI();
   setupSliders();
   loadSlidersFromStorage();
+  setupFocusFeedback();
 }
 
 // Load data from localStorage
@@ -672,6 +673,61 @@ function handleCommands(command) {
     return;
   }
 
+  if (command.includes("stoppen met lezen")) {
+    stopReading();
+    speakText("Lezen gestopt");
+    return;
+  }
+
+  if (command.includes("lezen")) {
+    readParagraph();
+    return;
+  }
+
+  // Tekstgrootte commando's
+  if (command.includes("tekst groter")) {
+    fontSize = Math.min(fontSize + 0.1, 3.0);
+    applyFontSize();
+    speakText(`Tekstgrootte verhoogd naar ${fontSize.toFixed(1)}`);
+    return;
+  }
+
+  if (command.includes("tekst veel groter")) {
+    fontSize = Math.min(fontSize + 0.5, 3.0);
+    applyFontSize();
+    speakText(`Tekstgrootte verhoogd naar ${fontSize.toFixed(1)}`);
+    return;
+  }
+
+  if (command.includes("tekst kleiner")) {
+    fontSize = Math.max(fontSize - 0.1, 1.0);
+    applyFontSize();
+    speakText(`Tekstgrootte verlaagd naar ${fontSize.toFixed(1)}`);
+    return;
+  }
+
+  if (command.includes("tekst veel kleiner")) {
+    fontSize = Math.max(fontSize - 0.5, 1.0);
+    applyFontSize();
+    speakText(`Tekstgrootte verlaagd naar ${fontSize.toFixed(1)}`);
+    return;
+  }
+
+  // Leessnelheid commando's
+  if (command.includes("leessnelheid omhoog")) {
+    speechRate = Math.min(speechRate + 0.1, 2.0);
+    updateSpeechRate();
+    speakText(`Leessnelheid verhoogd naar ${speechRate.toFixed(1)}`);
+    return;
+  }
+
+  if (command.includes("leessnelheid omlaag")) {
+    speechRate = Math.max(speechRate - 0.1, 0.5);
+    updateSpeechRate();
+    speakText(`Leessnelheid verlaagd naar ${speechRate.toFixed(1)}`);
+    return;
+  }
+
   // Existing annotation command
   if (command.includes("annotatie maken")) {
     // Stop any existing dictation first
@@ -700,12 +756,28 @@ function handleCommands(command) {
   }
 }
 
-function speakText(text) {
-  stopReading(); // Stop any current speech
+function applyFontSize() {
+  document.getElementById('manipulatieText').style.fontSize = `${fontSize}rem`;
+  document.getElementById('fontSize').value = fontSize;
+  document.getElementById('fontSizeValue').textContent = fontSize.toFixed(1);
+  localStorage.setItem('fontSize', fontSize);
+}
 
+function updateSpeechRate() {
+  document.getElementById('speechRate').value = speechRate;
+  document.getElementById('speechRateValue').textContent = speechRate.toFixed(1);
+  localStorage.setItem('speechRate', speechRate);
+
+  // Update huidige utterance indien actief
+  if (currentSpeechUtterance) {
+    currentSpeechUtterance.rate = speechRate;
+  }
+}
+
+function speakText(text, speedMultiplier = 1) {
   const speech = new SpeechSynthesisUtterance(text);
   speech.lang = 'nl-NL';
-  speech.rate = speechRate;
+  speech.rate = speechRate * speedMultiplier; // Combineer met globale snelheid
   window.speechSynthesis.speak(speech);
 }
 
@@ -760,6 +832,42 @@ function loadSlidersFromStorage() {
     document.getElementById('fontSizeValue').textContent = fontSize.toFixed(1);
     document.getElementById('manipulatieText').style.fontSize = `${fontSize}rem`;
   }
+}
+
+function getAccessibleName(element) {
+  return element.getAttribute('aria-label') ||
+    element.getAttribute('title') ||
+    element.placeholder ||
+    element.textContent.trim();
+}
+
+function setupFocusFeedback() {
+  const focusableElements = document.querySelectorAll(
+    'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+  );
+
+  focusableElements.forEach(element => {
+    element.addEventListener('focus', (e) => {
+      const label = getAccessibleName(e.target);
+      if (label) {
+        // Stop huidige speech als die bezig is
+        if (window.speechSynthesis.speaking) {
+          window.speechSynthesis.cancel();
+        }
+        speakText(label, 0.8);
+      }
+    });
+
+    // Optioneel: hover feedback voor muisgebruikers
+    element.addEventListener('mouseover', (e) => {
+      if (e.target !== document.activeElement) {
+        const label = getAccessibleName(e.target);
+        if (label) {
+          speakText(label, 0.8);
+        }
+      }
+    });
+  });
 }
 
 // Initialize the application

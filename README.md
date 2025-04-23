@@ -82,10 +82,10 @@ Dit is de basis geweest voor mijn eerste prototype: eenvoudige interface met zwa
 - Babyblauw als extra highlightkleur is prettig naast geel.
 - Liever niet annoteren per *zin*, maar per *onderdeel*.
 - Enter gebruiken om notitie te verzenden is fijn.
-- Tekst moet **groot** zijn, met letterspacing.
+- Tekst moet **groot** zijn, met evt. letterspacing.
 - Annotaties mogen **max 2 zinnen** zijn. Daarna is het vermoeiend.
 - Roger wil dat een notitie **duidelijk visueel los staat** van de tekst.
-- Hij stelt ‘Home’ en ‘End’ voor om snel te navigeren.
+- Hij stelt evt. ‘Home’ en ‘End’ voor om snel te navigeren.
 - Een **grote muiscursor** is fijn – kleine ziet hij niet.
 - Hij ziet highlight in het midden goed, mits het niet flikkert.
 - Hij maakt nu een foto om te herinneren – misschien afbeelding-annotaties toestaan?
@@ -98,7 +98,7 @@ Deze test leverde veel kleine maar belangrijke verbeteringen op:
 - Enter = submit werd toegevoegd.
 - Highlight werd groter en kreeg border.
 - Annotaties zijn visueel gescheiden van originele tekst (met border + andere kleur).
-- ‘Kleine nonsense’ zoals grappige meldingen (“Nice pick!”) zijn toegevoegd.
+- ‘Kleine nonsense’ zoals grappige feedback toegevoegd. Als je tegen de speech api zegt 'laat maar' of stop. Dan zegt hij een gek zinnetje terug.
 
 De interface is nu intuïtiever voor Roger. Ik ontdekte dat screenreadergebruikers andere navigatiegewoontes hebben – zoals liever minder scrollen/tabben, en sneller willen weten waar ze zijn.
 

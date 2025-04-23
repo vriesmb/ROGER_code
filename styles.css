@@ -314,7 +314,7 @@ section:has(> article){
     background: none;
     border: none;
     color: #ff4d4d;
-    font-size: 1.2rem;
+    font-size: 2rem;
     cursor: pointer;
     padding: 0 0.5rem;
 }
@@ -423,7 +423,7 @@ section:has(> article){
     background: none;
     border: none;
     color: #4CAF50;
-    font-size: 1rem;
+    font-size: 2rem;
     cursor: pointer;
     padding: 0 0.5rem;
 }
