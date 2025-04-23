@@ -2,9 +2,9 @@
 
 ## De Opdracht
 
-Voor dit project heb ik een annotatietool ontworpen die het maken en terugvinden van aantekeningen in digitale boeken toegankelijk maakt voor mensen met een visuele beperking. De tool is speciaal ontwikkeld op basis van de behoeften van **Roger**, een filosofiestudent met juveniele maculadegeneratie die volledig afhankelijk is van een screen reader.
+Voor dit project heb ik een annotatietool ontworpen die het maken en terugvinden van aantekeningen in digitale (studie)boeken toegankelijk maakt voor mensen met een visuele beperking, in het speciaal maculadegeneratie. De tool is in dit geval speciaal ontwikkeld op basis van de behoeften van **Roger**, een ervaren bouwkunde expert die rond een jaar of 40 maculadegeneratie heeft opgelopen. Momenteel is hij een filosofiestudent die (volledig) afhankelijk is van een screen reader.
 
-Roger wil tijdens het lezen van studieboeken zinnen of fragmenten kunnen markeren en van een aantekening voorzien, en deze later makkelijk kunnen terugvinden. De tool ondersteunt dit op een inclusieve manier.
+Roger wil tijdens het lezen van studieboeken zinnen of fragmenten kunnen markeren en van een aantekening voorzien, en deze later makkelijk kunnen terugvinden. Mijn tool ondersteunt dit op een inclusieve manier.
 
 ---
 
@@ -16,30 +16,32 @@ Roger leest zijn studieboeken digitaal en maakt aantekeningen met behulp van een
 - Typen gaat lastig, blind typen is niet mogelijk
 - Tekst kopiëren of overnemen met spraakcommando’s werkt beperkt
 - Annotaties zijn moeilijk terug te vinden of te onderscheiden van de originele tekst
+- Het studeren gaat hem momenteel moeizaam af door de prikkels en de enorme (visuele) inspanning die hij nu moet doen
 
-Roger wil:
-- Duidelijke, visueel herkenbare annotaties
+Roger wil graag:
+- In een handomdraai duidelijke, (visueel) herkenbare annotaties
 - Een manier om aantekeningen op te slaan tijdens het luisteren naar de tekst
 - Annotaties die makkelijk terug te vinden en te sorteren zijn
-- Een zo laagdrempelig mogelijke werkwijze
+- Een zo laagdrempelig mogelijke werkwijze / gebruiksvriendelijke ervaring
 
 ---
 
 ## Oplossing
 
-De oplossing is een digitale annotatie-interface die gebruik maakt van screen reader-ondersteuning, kleurcontrasten volgens WCAG-richtlijnen, toetsenbordnavigatie en spraakfunctionaliteit. Annotaties worden gemaakt met behulp van tekstinvoer en ingesproken feedback bij elke handeling. De tool houdt rekening met:
+Mijn oplossing is een digitale annotatie-interface die gebruik maakt van screen reader-ondersteuning, kleurcontrasten volgens WCAG-richtlijnen, toetsenbordnavigatie en spraakfunctionaliteit. Annotaties worden gemaakt met behulp van tekstinvoer en ingesproken feedback bij elke handeling. In de ontwikkeling van de tool is o.a. dus rekening gehouden met:
 
 - Grote, contrastrijke tekst en elementen
-- Annotatie herkenning via borders, kleuren en leesbare structuur
+- Annotatie herkenning, kleuren en scheiden van te lezen tekst
 - Directe feedback via screen reader (wat is geselecteerd, wat is opgeslagen)
-- Focus states en navigatie via toetsenbord (bijv. tab, home, end)
+- Spraakgestuurd handelingen uitvoeren, om (visuele) uitputting uit te stellen
+- Keybind(s) plaatsing, deze zijn geplaatst die hij kan voelen en niet visueel hoeft te zoeken
 
 ---
 
 
 ## Testen
 
-Gedurende de ontwerpweek heb ik vier testsessies gehouden met Roger, mijn casuspersoon. Roger heeft juveniele maculadegeneratie en leest uitsluitend met screenreaders. De tests waren essentieel om te begrijpen wat voor hem wél werkt, en waarom conventionele oplossingen vaak tekortschieten. In dit verslag combineer ik de ruwe notities met reflecties per testmoment.
+Gedurende de ontwerpweek heb ik vier testsessies gehouden met Roger. Roger heeft maculadegeneratie en leest uitsluitend met screenreaders. De tests waren essentieel om te begrijpen wat voor hem wél werkt, en waarom conventionele oplossingen vaak tekortschieten. In dit verslag combineer ik de ruwe notities met reflecties per testmoment.
 
 ---
 
@@ -143,7 +145,7 @@ Gedurende het project heb ik de **Exclusive Design Principles** toegepast:
 
 ### 1. Study Situation ✅
 - Ik heb actief geluisterd naar Roger en zijn workflows.
-- Zijn situatie (juveniele maculadegeneratie) en bestaande hulpmiddelen (NVDA, Supernova, donkere modus) zijn leidend geweest in de ontwerpkeuzes.
+- Zijn situatie (maculadegeneratie) en bestaande hulpmiddelen (NVDA, Supernova, donkere modus) zijn leidend geweest in de ontwerpkeuzes.
 
 ### 2. Ignore Conventions ✅
 - In plaats van conventionele annotatietools (die meestal visueel of met muis werken), koos ik voor toetsenbord- en spraakgestuurd gebruik.
